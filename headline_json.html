@@ -1,0 +1,44 @@
+<!-- File: headline_json.html -->
+<html>
+    <head>
+        <title>Membaca File Json</title>
+        <!-- Import Library JQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <!-- Kode Java Script -->
+        <script  type="text/javascript">
+            $(function(){
+                //Mengambil data dari file headline.json dengan fungsi $.get() JQuery
+                $.get('headline.json', function(obj) {
+                    //Tag tabel awal
+                    var str="<table style='margin-left:auto;margin-right:auto' border=1>";
+                    //Judul tabel
+                    str+="<tr><td>No</td><td>Judul Headline</td><td>Kategori</td><td>Waktu Publish</td><td>Waktu Scrapping</td></tr>";
+                    //Looping data headline dengan fungsi $.each() JQuery
+                    $.each(obj,function(n,data){
+                        //Isi tabel
+                        str+="<tr><td>"+(n+1)+"</td>";
+                        str+="<td>"+data.judul+"</td>";
+                        str+="<td>"+data.kategori+"</td>";
+                        str+="<td>"+data.waktuPublish+"</td>";
+                        str+="<td>"+data.waktuScrapping+"</td><tr>";
+                        
+                    //Kategori
+                    })
+                    //Tag tabel Penutup
+                    str+="</tabel>";
+                    //Display semua headline ke html dengan id=media
+                    $('#headline_json').html(str);
+                });
+            });
+        </script>
+    </head>
+    <body>
+         <!-- Menampilkan judul -->
+         <!-- <h1>Headline Republika Online</h1> -->
+         <h1><center>Berita Terkini </center></h1>
+         <!-- Menampilkan headline -->
+         <div id="headline_json"></div>
+         
+    </body>
+    </head>
+</html>
